@@ -71,17 +71,21 @@ class _HomePageState extends State<HomePage> {
               height: 5,
             ),
             Container(
-              height: 150,
+              height: 110,
               width: size.width,
-              child: GridView.builder(
-                  itemCount: 6,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5,
-                      childAspectRatio: 40 / 16,
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) => GenresCard()),
+              padding: EdgeInsets.all(3),
+              child: Center(
+                child: GridView.builder(
+                    itemCount: 6,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            childAspectRatio: 40 / 16,
+                            crossAxisCount: 3),
+                    itemBuilder: (context, index) => GenresCard()),
+              ),
             ),
             const SizedBox(
               height: 10,
