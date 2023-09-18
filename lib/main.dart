@@ -18,7 +18,7 @@ git push -u origin main
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await scheduleNotification();
+  scheduleNotification();
   // InAppPurchaseConnection.enablePendingPurchases();
   runApp(const MyApp());
 }
@@ -67,6 +67,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Novel World',
       theme: ThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Color.fromARGB(255, 1, 0, 8)),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

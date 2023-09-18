@@ -10,6 +10,8 @@ class DownloadPage extends StatefulWidget {
 class _DownloadPageState extends State<DownloadPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+       backgroundColor: const Color.fromARGB(255, 1, 0, 8),
+    );
   }
 }

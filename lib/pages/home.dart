@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../widget/genres_card.dart';
 import '../widget/latest_card.dart';
 import '../widget/popular_card.dart';
+import 'view_book.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> genres = [
+    'Romance',
+    'Fiction',
+    'Sci-fi',
+    'Comedy',
+    'Mystery',
+    'Fantasy',
+    'Drama',
+    'Action',
+    'Adventure',
+    'Horror',
+    'Psychology',
+    'Historical',
+    'Adult',
+    'Sports',
+  ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,22 +67,45 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.only(right: 10),
-                        child: LatestNovelCard(
-                          imageUrl:
-                              'https://books.google.com/books/content?id=AVXPAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-                          novelName: 'Prose',
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ViewBookDetails()));
+                          },
+                          child: LatestNovelCard(
+                            imageUrl:
+                                'https://books.google.com/books/content?id=AVXPAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+                            novelName: 'Prose',
+                          ),
                         ),
                       )),
             ),
             const SizedBox(
               height: 10,
             ),
-            Text(
-              'Genres',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                  color: Colors.white),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Genres',
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.grey[350]),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'View All',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
+                )
+              ],
             ),
             const SizedBox(
               height: 5,
@@ -84,7 +124,9 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSpacing: 5,
                             childAspectRatio: 40 / 16,
                             crossAxisCount: 3),
-                    itemBuilder: (context, index) => GenresCard()),
+                    itemBuilder: (context, index) => GenresCard(
+                          name: genres[index],
+                        )),
               ),
             ),
             const SizedBox(
@@ -105,7 +147,14 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                   itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.only(top: 5),
-                        child: PopularCard(),
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewBookDetails()));
+                            },
+                            child: PopularCard()),
                       )),
             )
           ],
